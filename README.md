@@ -29,8 +29,15 @@ js/main.js                        Mobile nav toggle
 - [x] Real photos in place on Home (hero), DJ R3$pecht (portrait + Wave Lounge flyer), About (studio shot), and Gallery (4 photos + flyer). All resized/compressed for web via `sips`. Still worth adding more over time — Instagram @dj_respecht and Facebook are the ongoing source — but the site no longer has bare placeholder sections.
 - [ ] Add testimonials once collected
 - [ ] Confirm the underlying rate sheet figures are final enough to publish as-is
-- [x] Interim logo/favicon in place — `img/logo-mark.svg`, a piano-key "scarf" ribbon (Kieran's established personal signature), used as the header icon and favicon. Can be replaced with a fully designed logo later, but this isn't a random placeholder.
-- [ ] **Before deploying:** the site root currently has ~12 raw phone photos (`PXL_*.jpg/.mp4`), `BLUE_KJ.jpg`, and `KJ CAL POLY.pdf` sitting loose outside `img/` — these were a review batch, only a few got used (now copied into `img/` under descriptive names). Move or delete the unused originals before running `git add .`, or they'll get committed and bloat the repo.
+- [x] Real logo assets in place: `img/logo-mark.png` (small piano-key ribbon "swish") as the header icon and favicon, `img/treble-clef-mark.png` (treble clef built from piano keys) as the primary brand mark, shown large on the homepage hero. **⚠️ Provenance unconfirmed** — both files were supplied directly by Kieran from a "BRAND IDEAS" folder; one sibling file (`BRAND IDEAS.jpeg`, not used) had a visible Depositphotos watermark, so these may be stock-derived. Kieran has said he'll address licensing later — don't treat this as resolved, follow up before the site goes fully public.
+- [x] Open Graph / Twitter card tags added to all indexable pages (`og:title`, `og:description`, `og:image`, `og:url`) so links shared to Instagram/Facebook/iMessage show a real preview card instead of nothing. Images point to `https://spechtlive.com/...` — will resolve once the domain is live.
+- [x] Repo is clean and ready to push — loose review photos/video/PDF moved to `../website-photo-review-batch/` (sibling folder, not inside the site), local git repo initialized with an initial commit on `main`.
+
+### Still open (not launch-blockers, but worth finalizing)
+- Real color palette/logo — currently placeholder navy/teal/rust
+- Final DJ R3$pecht dollar figures — currently placeholder ranges in `dj-respecht.html`, honestly flagged with a callout box
+- Testimonials — none collected yet
+- Confirm the Rate Sheet v2 figures are still accurate to publish as-is
 
 ## Deploying (Netlify)
 
