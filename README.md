@@ -18,26 +18,23 @@ gallery.html                      Photo/video gallery (placeholder until photos 
 faq.html                          Booking terms, policies, service FAQs
 book.html                         Inquiry form (Netlify Forms)
 thanks.html                       Form submission success page
-css/style.css                     Shared styles (placeholder brand palette)
+css/style.css                     Shared styles (deep purple dark theme)
 js/main.js                        Mobile nav toggle
 ```
 
 ## Status / before this goes live
 
-- [ ] Swap the placeholder color palette (`css/style.css` `:root` variables) for real brand colors/logo once designed
-- [ ] Confirm final DJ R3$pecht dollar figures — currently placeholder ranges in `dj-respecht.html`, flagged with a callout box
+- [x] Real dark "deep purple" theme implemented in `css/style.css` — background `#170f22`/`#211630`, accent purple `#C9A6F5`, gold `#E8B84B` for DJ-track differentiation (staging=purple, DJ=gold), near-black footer `#0d0815`. Chosen over a carbon (black/green — "too Spotify") and deep-blue alternative, which were mocked up and rejected. Logo marks were regenerated as white/light transparent PNGs (`logo-mark.png`, `treble-clef-mark.png`) since the originals were black-on-transparent and would've disappeared on the new dark background; black transparent versions kept as `*-black.png` for any future light-context use. Favicon intentionally still uses the black version (`logo-mark-black.png`) since browser tab chrome is typically light regardless of site theme.
+- [x] DJ R3$pecht dollar figures are now firm published numbers in `dj-respecht.html` (Ceremony/Cocktail $175 flat, Reception/Party $700/$825, Full Wedding $1,150/$1,400, additional hour $125/hr, Guest DJ/Festival $250–350). Derived from the confirmed Staging Solutions combo-package rates per the original plan doc's pricing logic, approved by Kieran with "can adjust later if needed." The placeholder callout box has been removed from the page.
 - [x] Real photos in place on Home (hero), DJ R3$pecht (portrait + Wave Lounge flyer), About (studio shot), and Gallery (4 photos + flyer). All resized/compressed for web via `sips`. Still worth adding more over time — Instagram @dj_respecht and Facebook are the ongoing source — but the site no longer has bare placeholder sections.
-- [ ] Add testimonials once collected
-- [ ] Confirm the underlying rate sheet figures are final enough to publish as-is
-- [x] Real logo assets in place: `img/logo-mark.png` (small piano-key ribbon "swish") as the header icon and favicon, `img/treble-clef-mark.png` (treble clef built from piano keys) as the primary brand mark, shown large on the homepage hero. **⚠️ Provenance unconfirmed** — both files were supplied directly by Kieran from a "BRAND IDEAS" folder; one sibling file (`BRAND IDEAS.jpeg`, not used) had a visible Depositphotos watermark, so these may be stock-derived. Kieran has said he'll address licensing later — don't treat this as resolved, follow up before the site goes fully public.
+- [ ] Testimonials — none collected. Kieran will collect real ones; explicitly decided against generating fake/generic testimonials (would be misleading advertising for a real business) — do not suggest fabricating these.
+- [x] Rate Sheet v2 confirmed accurate as published by Kieran — no changes needed to Specht Staging Solutions pricing.
+- [x] Real logo assets in place: `img/logo-mark.png` (small piano-key ribbon "swish") as the header icon, `img/treble-clef-mark.png` (treble clef built from piano keys) as the primary brand mark, shown large on the homepage hero. Provenance/licensing was unconfirmed (a sibling reference file had a visible stock watermark) — Kieran has stated this is handled and not a near-term concern.
 - [x] Open Graph / Twitter card tags added to all indexable pages (`og:title`, `og:description`, `og:image`, `og:url`) so links shared to Instagram/Facebook/iMessage show a real preview card instead of nothing. Images point to `https://spechtlive.com/...` — will resolve once the domain is live.
-- [x] Repo is clean and ready to push — loose review photos/video/PDF moved to `../website-photo-review-batch/` (sibling folder, not inside the site), local git repo initialized with an initial commit on `main`.
+- [x] Repo is clean and ready to push — loose review photos/video/PDF moved to `../website-photo-review-batch/` (sibling folder, not inside the site), local git repo initialized with commits on `main`.
 
 ### Still open (not launch-blockers, but worth finalizing)
-- Real color palette/logo — currently placeholder navy/teal/rust
-- Final DJ R3$pecht dollar figures — currently placeholder ranges in `dj-respecht.html`, honestly flagged with a callout box
-- Testimonials — none collected yet
-- Confirm the Rate Sheet v2 figures are still accurate to publish as-is
+- Testimonials — none collected yet; real ones only, no fabricated placeholders.
 
 ## Deploying (Netlify)
 
