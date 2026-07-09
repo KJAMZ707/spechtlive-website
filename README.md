@@ -1,11 +1,13 @@
 # Specht Live — website
 
+**Live at [spechtlive.com](https://spechtlive.com).**
+
 Source for spechtlive.com. Covers both business tracks under one operator, Kieran Specht:
 
 - **Specht Staging Solutions** — sound, lighting, and staging production/rental
 - **DJ R3$pecht** — DJ performance
 
-Plain HTML/CSS/JS, no build step, no framework. Deploys as a static site.
+Plain HTML/CSS/JS, no build step, no framework. Deployed as a static site on Netlify, repo hosted at [github.com/KJAMZ707/spechtlive-website](https://github.com/KJAMZ707/spechtlive-website).
 
 ## Structure
 
@@ -14,49 +16,39 @@ index.html                        Homepage
 about.html                        Bio + credentials
 specht-staging-solutions.html     Services & pricing (Staging Solutions track)
 dj-respecht.html                  Packages & pricing (DJ track)
-gallery.html                      Photo/video gallery (placeholder until photos are curated)
+gallery.html                      Photo/video gallery — 4 photos + flyer live, more being added over time
 faq.html                          Booking terms, policies, service FAQs
 book.html                         Inquiry form (Netlify Forms)
 thanks.html                       Form submission success page
 css/style.css                     Shared styles (deep purple dark theme)
 js/main.js                        Mobile nav toggle
+img/                              Photos + logo marks (see CLAUDE.md for asset details)
 ```
 
-## Status / before this goes live
+## Current status
 
-- [x] Real dark "deep purple" theme implemented in `css/style.css` — background `#170f22`/`#211630`, accent purple `#C9A6F5`, gold `#E8B84B` for DJ-track differentiation (staging=purple, DJ=gold), near-black footer `#0d0815`. Chosen over a carbon (black/green — "too Spotify") and deep-blue alternative, which were mocked up and rejected. Logo marks were regenerated as white/light transparent PNGs (`logo-mark.png`, `treble-clef-mark.png`) since the originals were black-on-transparent and would've disappeared on the new dark background; black transparent versions kept as `*-black.png` for any future light-context use. Favicon intentionally still uses the black version (`logo-mark-black.png`) since browser tab chrome is typically light regardless of site theme.
-- [x] DJ R3$pecht dollar figures are now firm published numbers in `dj-respecht.html` (Ceremony/Cocktail $175 flat, Reception/Party $700/$825, Full Wedding $1,150/$1,400, additional hour $125/hr, Guest DJ/Festival $250–350). Derived from the confirmed Staging Solutions combo-package rates per the original plan doc's pricing logic, approved by Kieran with "can adjust later if needed." The placeholder callout box has been removed from the page.
-- [x] Real photos in place on Home (hero), DJ R3$pecht (portrait + Wave Lounge flyer), About (studio shot), and Gallery (4 photos + flyer). All resized/compressed for web via `sips`. Still worth adding more over time — Instagram @dj_respecht and Facebook are the ongoing source — but the site no longer has bare placeholder sections.
-- [ ] Testimonials — none collected. Kieran will collect real ones; explicitly decided against generating fake/generic testimonials (would be misleading advertising for a real business) — do not suggest fabricating these.
-- [x] Rate Sheet v2 confirmed accurate as published by Kieran — no changes needed to Specht Staging Solutions pricing.
-- [x] Real logo assets in place: `img/logo-mark.png` (small piano-key ribbon "swish") as the header icon, `img/treble-clef-mark.png` (treble clef built from piano keys) as the primary brand mark, shown large on the homepage hero. Provenance/licensing was unconfirmed (a sibling reference file had a visible stock watermark) — Kieran has stated this is handled and not a near-term concern.
-- [x] Open Graph / Twitter card tags added to all indexable pages (`og:title`, `og:description`, `og:image`, `og:url`) so links shared to Instagram/Facebook/iMessage show a real preview card instead of nothing. Images point to `https://spechtlive.com/...` — will resolve once the domain is live.
-- [x] Repo is clean and ready to push — loose review photos/video/PDF moved to `../website-photo-review-batch/` (sibling folder, not inside the site), local git repo initialized with commits on `main`.
+**Fully deployed and operational as of this writing.** Verified end-to-end: HTTPS/SSL valid on the custom domain, HTTP→HTTPS redirect works, all 8 pages return 200, booking form tested live (submission → redirect → Netlify Forms capture → email notification arriving at booking@spechtlive.com, confirmed by an actual received email).
 
-### Still open (not launch-blockers, but worth finalizing)
-- Testimonials — none collected yet; real ones only, no fabricated placeholders.
+- [x] **Deployed** — pushed to GitHub (`main` branch), imported into Netlify, live at spechtlive.com with a valid Let's Encrypt SSL certificate.
+- [x] **DNS** — domain's nameservers point to Netlify DNS (`*.p05.nsone.net`). Netlify manages all DNS records for the domain now, not GoDaddy.
+- [x] **Email routing (MX record)** — `spechtlive.com` has an MX record (`1 smtp.google.com`) pointing to Google Workspace, added manually in Netlify's DNS records. This was necessary because switching nameservers to Netlify DNS did *not* carry over the Google Workspace mail configuration that used to live in GoDaddy's DNS zone — without this record, no `@spechtlive.com` address (including booking@, billing@, kieran@) can receive mail from outside senders.
+- [x] **Netlify Forms fully working** — `book.html`'s form submits correctly, redirects to `thanks.html`, and triggers an email notification to booking@spechtlive.com. This required manually enabling **"Form detection"** on the Forms page in Netlify's dashboard (Site → Forms → "Enable form detection") followed by a fresh deploy — this is *not* on by default even though Netlify's UI lets you configure a notification rule for a form before detection is actually enabled, which is misleading and was the source of a real 404-on-submit bug before it was found and fixed.
+- [x] Deep purple dark theme, firm DJ pricing, real photos/logo — see `CLAUDE.md` for details on what's implemented and why.
+- [ ] **Testimonials** — none collected yet. Kieran is having people write them now; plan is to batch several together into one update rather than adding them one at a time. Explicitly decided against generating fake/generic testimonials — do not suggest fabricating these.
+- [ ] **More gallery photos** — Kieran is gathering additional photos/material to add to `gallery.html` over time.
+- [ ] **`booking@spechtlive.com` / `billing@spechtlive.com` Google Workspace access** — was blocked by a circular "verify it's you" email-code loop on first login (no recovery phone/backup email configured on those accounts yet). Kieran has since gotten into booking@ (confirmed — he received and pasted back the test notification email). Worth setting a recovery phone number on both accounts to prevent this happening again; unclear if billing@ access has been separately resolved.
+- [ ] **Logo licensing** — source images for the logo marks (`Treble.jpeg`, `Swish.png`, supplied directly by Kieran) have unconfirmed provenance; a sibling reference file had a visible stock-photo watermark. Kieran has said he'll handle this later and considers it a low near-term priority — not blocking, but not resolved either.
 
-## Deploying (Netlify)
+## Deploying (reference — already done, for redeploy/reference purposes)
 
-1. Push this folder to a new GitHub repository (see below).
-2. Sign in to [netlify.com](https://netlify.com) with your GitHub account.
-3. Click "Add new site" → "Import an existing project" → select this repo.
-4. Netlify auto-detects it as a static site — no build command or publish directory needed (leave both blank, or set publish directory to `/`).
-5. Deploy. Netlify Forms is enabled automatically for `book.html` because the form has `data-netlify="true"` — submissions appear under the site's **Forms** tab in Netlify, and you can turn on email notifications there to reach booking@spechtlive.com.
-6. In Netlify → Domain management, add `spechtlive.com` and follow the DNS instructions — you'll either update nameservers at GoDaddy to point to Netlify, or add the specific A/CNAME records Netlify gives you directly in GoDaddy's DNS settings.
+The steps below are what was actually followed to get this live; keep this if the site ever needs to be redeployed from scratch (new repo, new Netlify site, etc.).
 
-## Pushing to GitHub
-
-Run these in Terminal, from inside this folder:
-
-```bash
-cd "path/to/spechtlive-website"
-git init
-git add .
-git commit -m "Initial site build"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-git push -u origin main
-```
-
-Create the empty repository on github.com first (no README/license needed, since this folder already has one), then swap in your actual username and repo name above.
+1. Push the folder to a GitHub repository. Currently: `git remote add origin https://github.com/KJAMZ707/spechtlive-website.git` then `git push -u origin main`.
+   - **Auth note:** GitHub no longer accepts password auth for git operations. Use a **classic** personal access token (Settings → Developer settings → Tokens (classic) → Generate new token (classic), `repo` scope checked) as the password when prompted. Fine-grained tokens are more error-prone for this (repository-access scoping is easy to get wrong) — classic is simpler and was what actually worked here after a fine-grained token failed with a 403.
+2. Sign in to [netlify.com](https://netlify.com) with GitHub, **Add new site** → **Import an existing project** → select the repo.
+3. Leave build command and publish directory blank (or `/`) — static site, nothing to build.
+4. Deploy.
+5. **Enable Netlify Forms properly** — go to Site → **Forms**, click **"Enable form detection"** (this is a separate, non-default toggle — configuring a notification rule for a form does *not* imply detection is on), then trigger a fresh deploy (Deploys → Trigger deploy → Deploy site) so the setting actually takes effect. Skipping this causes a silent 404 on every form submission even though everything else looks correctly configured.
+6. In Site → Forms → **Form submission notifications**, add an email notification for the `booking` form to booking@spechtlive.com.
+7. In Netlify → Domain management, add `spechtlive.com`. Choose **Netlify DNS** (simplest — hands nameserver control to Netlify) and update the nameservers at the domain registrar (GoDaddy) to the 4 values Netlify provides.
+8. **Re-add mail records** — once Netlify DNS takes over, manually re-add the Google Workspace MX record (`MX`, host `@`, priority `1`, value `SMTP.GOOGLE.COM`) in Netlify's DNS records editor for the domain, or mail stops routing for every `@spechtlive.com` address. SSL certificate provisioning also won't complete until DNS has fully propagated to Netlify.
