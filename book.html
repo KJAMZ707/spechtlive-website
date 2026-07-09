@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now — Specht Live</title>
+<meta name="description" content="Request availability and a custom quote from Specht Staging Solutions or DJ R3$pecht.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Book Now — Specht Live">
+<meta property="og:description" content="Request availability and a custom quote from Specht Staging Solutions or DJ R3$pecht.">
+<meta property="og:image" content="https://spechtlive.com/img/dj-wedding-wide.jpg">
+<meta property="og:url" content="https://spechtlive.com/book.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="img/logo-mark.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="img/logo-mark.svg" alt="" class="logo-mark">Specht<span>Live</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="specht-staging-solutions.html">Staging Solutions</a></li>
+      <li><a href="dj-respecht.html">DJ R3$pecht</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="book.html" class="btn btn-primary">Book now</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" style="padding:56px 0 40px;">
+  <div class="container">
+    <h1>Start your inquiry</h1>
+    <p class="lead">Tell us about your event. Kieran follows up personally within a few business days with availability and a custom quote.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container">
+    <form name="booking" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" class="booking-form">
+      <input type="hidden" name="form-name" value="booking" />
+      <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-row">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+
+      <div class="form-row">
+        <label for="event_date">Event date</label>
+        <input type="date" id="event_date" name="event_date">
+      </div>
+
+      <div class="form-row">
+        <label><input type="checkbox" name="date_flexible" value="yes"> My date is flexible</label>
+      </div>
+
+      <div class="form-row">
+        <label for="event_type">Event type</label>
+        <select id="event_type" name="event_type">
+          <option>Wedding</option>
+          <option>Corporate</option>
+          <option>Private party</option>
+          <option>Venue booking</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Service needed</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="service" value="DJ"> DJ</label>
+          <label><input type="checkbox" name="service" value="Sound Engineering"> Sound Engineering</label>
+          <label><input type="checkbox" name="service" value="Lighting"> Lighting</label>
+          <label><input type="checkbox" name="service" value="Staging"> Staging</label>
+          <label><input type="checkbox" name="service" value="Full Combo"> Full Combo</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="package">Package of interest</label>
+        <input type="text" id="package" name="package" placeholder="e.g. Full Production, or “not sure yet”">
+      </div>
+
+      <div class="form-row">
+        <label for="venue">Venue / location</label>
+        <input type="text" id="venue" name="venue">
+      </div>
+
+      <div class="form-row">
+        <label for="guests">Estimated guest count</label>
+        <input type="number" id="guests" name="guests" min="1">
+      </div>
+
+      <div class="form-row">
+        <label for="budget">Budget range (optional)</label>
+        <input type="text" id="budget" name="budget">
+      </div>
+
+      <div class="form-row">
+        <label for="source">How did you hear about us?</label>
+        <select id="source" name="source">
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Referral</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Notes / message</label>
+        <textarea id="message" name="message" rows="5"></textarea>
+      </div>
+
+      <p class="form-note">Events booked more than 30 days out require a 50% deposit to hold the date. Travel beyond 30 miles from Arcata is billed at $0.65/mile round trip. Full booking terms are on the <a href="faq.html">FAQ page</a>.</p>
+
+      <button type="submit" class="btn btn-primary">Send inquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Specht Live</h4>
+        <p style="font-size:14px; color:#c7d2e6;">Specht Staging Solutions and DJ R3$pecht are both operated by Kieran Specht, serving Humboldt County, CA.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="specht-staging-solutions.html">Staging Solutions</a></li>
+          <li><a href="dj-respecht.html">DJ R3$pecht</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:booking@spechtlive.com">booking@spechtlive.com</a></li>
+          <li><a href="https://www.instagram.com/dj_respecht/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/katbff" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Specht Live. Specht Staging Solutions is a division of Kieran Specht Productions.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
