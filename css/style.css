@@ -39,7 +39,7 @@ h1, h2, h3 { line-height: 1.25; }
 }
 .logo { display: inline-flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: 0.5px; }
 .logo span { color: var(--navy); }
-.logo-mark { width: 26px; height: 26px; flex-shrink: 0; }
+.logo-mark { height: 28px; width: auto; flex-shrink: 0; }
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { color: var(--ink); font-weight: 500; font-size: 15px; }
 .nav-links a:hover { color: var(--navy); text-decoration: none; }
@@ -129,6 +129,13 @@ form.booking-form { display: grid; gap: 20px; max-width: 640px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin: 8px 0 40px; }
 .gallery-grid figure { margin: 0; }
 .gallery-grid figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+/* Testimonials */
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 8px; }
+@media (max-width: 800px) { .testimonial-grid { grid-template-columns: 1fr; } }
+.testimonial-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 0; }
+.testimonial-card p { color: var(--ink); font-size: 15px; font-style: italic; margin: 0 0 14px; }
+.testimonial-card cite { color: var(--navy); font-style: normal; font-weight: 600; font-size: 14px; }
 
 /* Callout */
 .callout { background: #2e2418; border: 1px solid #6b5530; border-radius: var(--radius); padding: 16px 20px; font-size: 14px; margin: 24px 0; color: var(--ink); }
