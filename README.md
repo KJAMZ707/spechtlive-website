@@ -16,33 +16,30 @@ index.html                        Homepage
 about.html                        Bio + credentials
 specht-staging-solutions.html     Services & pricing (Staging Solutions track)
 dj-respecht.html                  Packages & pricing (DJ track)
-gallery.html                      Photo/video gallery — 4 photos + flyer live, more being added over time
+lessons.html                      Private lessons, group lessons, workshops/clinics (Education track)
+gallery.html                      Photo/video gallery — past shows + upcoming, more being added over time
 faq.html                          Booking terms, policies, service FAQs
-book.html                         Inquiry form (Netlify Forms)
+book.html                         Event inquiry form (Netlify Forms — "booking")
 thanks.html                       Form submission success page
 css/style.css                     Shared styles (deep purple dark theme)
 js/main.js                        Mobile nav toggle
 img/                              Photos + logo marks (see CLAUDE.md for asset details)
+source-material/                  Raw supplied files (business card PDFs, etc.) — gitignored, not web assets
 ```
 
 ## Current status
 
-**Fully deployed and operational as of this writing.** Verified end-to-end: HTTPS/SSL valid on the custom domain, HTTP→HTTPS redirect works, all 8 pages return 200, booking form tested live (submission → redirect → Netlify Forms capture → email notification arriving at booking@spechtlive.com, confirmed by an actual received email).
+**Fully deployed and operational as of this writing.** Verified end-to-end: HTTPS/SSL valid on the custom domain, HTTP→HTTPS redirect works, all 9 pages return 200, `booking` form tested live (submission → redirect → Netlify Forms capture → email notification arriving at booking@spechtlive.com, confirmed by an actual received email).
 
 - [x] **Deployed** — pushed to GitHub (`main` branch), imported into Netlify, live at spechtlive.com with a valid Let's Encrypt SSL certificate.
 - [x] **DNS** — domain's nameservers point to Netlify DNS (`*.p05.nsone.net`). Netlify manages all DNS records for the domain now, not GoDaddy.
-- [x] **Email routing (MX record)** — `spechtlive.com` has an MX record (`1 smtp.google.com`) pointing to Google Workspace, added manually in Netlify's DNS records. This was necessary because switching nameservers to Netlify DNS did *not* carry over the Google Workspace mail configuration that used to live in GoDaddy's DNS zone — without this record, no `@spechtlive.com` address (including booking@, billing@, kieran@) can receive mail from outside senders.
-- [x] **Netlify Forms fully working** — `book.html`'s form submits correctly, redirects to `thanks.html`, and triggers an email notification to booking@spechtlive.com. This required manually enabling **"Form detection"** on the Forms page in Netlify's dashboard (Site → Forms → "Enable form detection") followed by a fresh deploy — this is *not* on by default even though Netlify's UI lets you configure a notification rule for a form before detection is actually enabled, which is misleading and was the source of a real 404-on-submit bug before it was found and fixed.
-- [x] Deep purple dark theme, firm DJ pricing, real photos/logo — see `CLAUDE.md` for details on what's implemented and why.
-- [x] **Primary logo** — `img/treble-clef-mark.png` is now the header icon (small scale, `.logo-mark`, 28px tall) and favicon (`treble-clef-mark-black.png`) on all 8 pages, in addition to its original large placement on the homepage hero. The old ribbon "swish" mark (`img/logo-mark.png`) is no longer used as the header icon.
-- [x] **DJ page header graphic** — `dj-respecht.html`'s `<h1>DJ R3$pecht</h1>` was replaced with `img/dj-graffiti-logo.png`, a gold graffiti-style wordmark cut from a supplied business-card PDF with a transparent background.
-- [x] **Staging Solutions photo** — `specht-staging-solutions.html` had no photo at all; added `img/concert-silhouette.png` (purple stage-lighting shot) to the hero area.
-- [x] **Homepage/DJ page photo swap** — close-crop portrait (`dj-scarf-portrait.jpg`) now on the homepage, wide shot (`dj-wedding-wide.jpg`) now on `dj-respecht.html` (previously reversed).
-- [x] **Phone number in footer** — `(707) 298-8561` added to the Contact list in the footer on all 7 pages that have one (`thanks.html` has no footer-grid).
-- [x] **FAQ: power/generators** — new entry under "Services & equipment" clarifying Specht Live doesn't supply major power/generators; house/venue power required, smaller mobile audio packages available on request.
-- [x] **Testimonials** — 3 real quotes (The Undercovers, Bobby Amirkhan/Blue Lake Wave Lounge, Love Taaa) added to a new "What people are saying" section on `index.html`, using `.testimonial-grid`/`.testimonial-card` in `css/style.css`. Supplied directly by the operator as text, not fabricated.
-- [x] **Thank-you page photo** — `img/gig-purple-rain.jpg` (DJ set from atop a light-rigged car in the rain, purple stage lighting) added to `thanks.html` after the hero-actions buttons.
-- [ ] **More gallery photos** — Kieran is gathering additional photos/material to add to `gallery.html` over time; several supplied photos from this round are still unused and available for a future gallery/promo update.
+- [x] **Email routing (MX record)** — `spechtlive.com` has an MX record (`1 smtp.google.com`) pointing to Google Workspace, added manually in Netlify's DNS records.
+- [x] **Netlify Forms fully working** — `book.html`'s `booking` form submits correctly, redirects to `thanks.html`, and triggers an email notification to booking@spechtlive.com. Required manually enabling **"Form detection"** in Netlify's dashboard (Site → Forms → "Enable form detection", not on by default) followed by a fresh deploy.
+- [x] Deep purple dark theme, firm DJ pricing, real photos/logo, testimonials, upcoming/past events — see `CLAUDE.md` for full details on what's implemented and why.
+- [x] **Lessons & Workshops page** (`lessons.html`) — new third track alongside Staging Solutions and DJ R3$pecht. Private lessons ($30/hr, $20/hr first lesson) are bookable now via a new `lesson-inquiry` Netlify form; Group Lessons and Workshops/Clinics are published as pricing/subject reference only, clearly labeled "Program launching Mid-Sept–Early Oct 2026" (not bookable yet — no live class dates or 24-hour advance/walk-up cutoff logic implemented yet, since there's nothing to book against). A second new Netlify form, `rental-inquiry`, handles simple instrument-rental requests (not a payment flow). Photo: `img/music-room.jpg`. Homepage's two-track section became a three-card "Three ways to work with Kieran" section (`track-grid` CSS now supports 3 columns).
+  - **Action needed in Netlify dashboard:** add **Form submission notifications** for the new `lesson-inquiry` and `rental-inquiry` forms (Site → Forms → Form submission notifications), same as the existing `booking` form has. Not something git/deploy can do — must be done manually once, same one-time step as the original Forms setup.
+- [ ] **Group Lessons / Workshops booking logic** — deferred until Kieran has real class dates to list. Will need: a per-listing date + location field, and JS (or a small backend) to auto-switch advance vs. walk-up pricing at the 24-hour-before-event mark.
+- [ ] **More gallery photos** — Kieran is gathering additional photos/material to add to `gallery.html` over time.
 - [ ] **`booking@spechtlive.com` / `billing@spechtlive.com` Google Workspace access** — was blocked by a circular "verify it's you" email-code loop on first login (no recovery phone/backup email configured on those accounts yet). Kieran has since gotten into booking@ (confirmed — he received and pasted back the test notification email). Worth setting a recovery phone number on both accounts to prevent this happening again; unclear if billing@ access has been separately resolved.
 - [ ] **Logo licensing** — source images for the logo marks (`Treble.jpeg`, `Swish.png`, supplied directly by Kieran) have unconfirmed provenance; a sibling reference file had a visible stock-photo watermark. Kieran has said he'll handle this later and considers it a low near-term priority — not blocking, but not resolved either.
 
